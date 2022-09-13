@@ -43,7 +43,7 @@ const Div_Main = styled.div`
   min-width: 360px;
   background-color: ${themes.color.bright};
   padding-top: 2em;
-  height: 87.8vh;
+  height: 110vh;
 `
 
 const H1_MainHeading = styled.h1`
