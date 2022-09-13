@@ -6,10 +6,11 @@ import styled from '@emotion/styled'
 export const Projects = () => {
   return (
     <Div_Main>
-      <H1_MainHeading>Projects</H1_MainHeading>
+      <H1_MainHeading>PROJECTS</H1_MainHeading>
+
       <Div_ProjectContainer>
         <Link_LinkImg to={urls.jsHistory}>
-          <Img_JS src={urls.images.jsHistory}></Img_JS>
+          <Img_ProjectImg src={urls.images.jsHistory}></Img_ProjectImg>
         </Link_LinkImg>
         <Div_TextContainer>
           <H2_ProjectHeading>JS History</H2_ProjectHeading>
@@ -17,11 +18,15 @@ export const Projects = () => {
             A simple static web application made with React classes split into 4 components. For
             styling I used Emotion Styled Components.
           </P_ProjectDescription>
+          <a href={urls.gitHub.jsHistory}>
+            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+          </a>
         </Div_TextContainer>
       </Div_ProjectContainer>
+
       <Div_ProjectContainerReverse>
         <Link_LinkImg to={urls.todolist}>
-          <Img_JS src={urls.images.Todo}></Img_JS>
+          <Img_ProjectImg src={urls.images.Todo}></Img_ProjectImg>
         </Link_LinkImg>
         <Div_TextContainer>
           <H2_ProjectHeading>To-do list</H2_ProjectHeading>
@@ -32,11 +37,15 @@ export const Projects = () => {
             complete all at once and then delete everything that is marked as completed. For styling
             I used Emotion Styled Components.
           </P_ProjectDescription>
+          <a href={urls.gitHub.todolist}>
+            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+          </a>
         </Div_TextContainer>
       </Div_ProjectContainerReverse>
+
       <Div_ProjectContainer>
         <Link_LinkImg to={urls.hackertyper}>
-          <Img_JS src={urls.images.HackerTyper}></Img_JS>
+          <Img_ProjectImg src={urls.images.HackerTyper}></Img_ProjectImg>
         </Link_LinkImg>
         <Div_TextContainer>
           <H2_ProjectHeading>HackerTyper</H2_ProjectHeading>
@@ -47,11 +56,15 @@ export const Projects = () => {
             {`"shift"`} key press, {`"Access Denied"`} on {`"ctrl"`} key press or resets state of
             the whole application with {`"ESC"`}. For styling I used Emotion Styled Components.
           </P_ProjectDescription>
+          <a href={urls.gitHub.hackertyper}>
+            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+          </a>
         </Div_TextContainer>
       </Div_ProjectContainer>
+
       <Div_ProjectContainerReverse>
         <Link_LinkImg to={urls.mortgage}>
-          <Img_JS src={urls.images.Mortgage}></Img_JS>
+          <Img_ProjectImg src={urls.images.Mortgage}></Img_ProjectImg>
         </Link_LinkImg>
         <Div_TextContainer>
           <H2_ProjectHeading>Mortgage Calculator</H2_ProjectHeading>
@@ -63,11 +76,15 @@ export const Projects = () => {
             of and the remaning loan. All of this is displayed on Payment charts. For styling I used
             Emotion Styled Components.
           </P_ProjectDescription>
+          <a href={urls.gitHub.mortgage}>
+            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+          </a>
         </Div_TextContainer>
       </Div_ProjectContainerReverse>
+
       <Div_ProjectContainer>
         <Link_LinkImg to={urls.memoryGame}>
-          <Img_JS src={urls.images.MemoryGame}></Img_JS>
+          <Img_ProjectImg src={urls.images.MemoryGame}></Img_ProjectImg>
         </Link_LinkImg>
         <Div_TextContainer>
           <H2_ProjectHeading>Memory Game</H2_ProjectHeading>
@@ -75,11 +92,14 @@ export const Projects = () => {
             A simple Cat Memory Game web application made with React and React hooks. For styling I
             used Emotion Styled Components.
           </P_ProjectDescription>
+          <a href={urls.gitHub.memoryGame}>
+            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+          </a>
         </Div_TextContainer>
       </Div_ProjectContainer>
       <Div_ProjectContainerReverse>
         <Link_LinkImg to={urls.blog}>
-          <Img_JS src={urls.images.Blog}></Img_JS>
+          <Img_ProjectImg src={urls.images.Blog}></Img_ProjectImg>
         </Link_LinkImg>
         <Div_TextContainer>
           <H2_ProjectHeading>Blog app</H2_ProjectHeading>
@@ -91,11 +111,20 @@ export const Projects = () => {
             edit them. Due to the use of async functions and fetching, cards with {`"Loading..."`},
             or error messages are displayed. For styling I used Emotion Styled Components.
           </P_ProjectDescription>
+          <a href={urls.gitHub.blog}>
+            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+          </a>
         </Div_TextContainer>
       </Div_ProjectContainerReverse>
     </Div_Main>
   )
 }
+
+const Img_GitHubIcon = styled.img`
+  position: absolute;
+  top: 5%;
+  right: 5%;
+`
 
 const H1_MainHeading = styled.h1`
   color: ${themes.color.dark};
@@ -114,6 +143,7 @@ const Div_Main = styled.div`
 `
 
 const Div_TextContainer = styled.div`
+  position: relative;
   flex: 1;
   text-align: center;
   padding: ${themes.spacing.s};
@@ -159,6 +189,6 @@ const Link_LinkImg = styled(Link)`
   flex: 1;
 `
 
-const Img_JS = styled.img`
+const Img_ProjectImg = styled.img`
   width: 100%;
 `

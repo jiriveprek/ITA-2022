@@ -4,6 +4,7 @@ import JSHistory from './images/JS_History.png'
 import MemoryGame from './images/Memory.png'
 import Mortgage from './images/Mortgage.png'
 import Todo from './images/Todo.png'
+import gitHubIcon from './images/GitHub-Mark-32px.png'
 import profilePic from './images/ProfilePic.jpg'
 
 export const urls = {
@@ -28,6 +29,15 @@ export const urls = {
     Mortgage: `${Mortgage}`,
     MemoryGame: `${MemoryGame}`,
     Blog: `${Blog}`,
+    gitHub: `${gitHubIcon}`,
+  },
+  gitHub: {
+    jsHistory: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/js-history',
+    todolist: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/todoRedux',
+    hackertyper: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/hackertyper',
+    mortgage: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/mortgage',
+    memoryGame: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/memory',
+    blog: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/blog',
   },
 } as const
 

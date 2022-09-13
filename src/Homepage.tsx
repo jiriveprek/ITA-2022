@@ -5,15 +5,19 @@ import styled from '@emotion/styled'
 export const Homepage = () => {
   return (
     <Div_Main>
-      <H1_MainHeading>My Portfolio</H1_MainHeading>
+      <H1_MainHeading>MY PORTFOLIO</H1_MainHeading>
       <div>
         <div>
           <Img_ProfilePic src={urls.images.profilePic}></Img_ProfilePic>
         </div>
         <div>
-          <P_Text>
-            Welcome to my portfolio made in <Span_Embolden>React</Span_Embolden>
-          </P_Text>
+          <P_WelcomeText>
+            Welcome to my portfolio{' '}
+            <Span_NewLine>
+              made in <Span_Embolden>React</Span_Embolden>
+            </Span_NewLine>
+          </P_WelcomeText>
+          <Div_Line></Div_Line>
           <P_Text>
             My name is <Span_Embolden>Jiří Vepřek</Span_Embolden>
           </P_Text>
@@ -23,11 +27,18 @@ export const Homepage = () => {
     </Div_Main>
   )
 }
-
+const Div_Line = styled.div`
+  background-color: ${themes.color.dark};
+  width: 15em;
+  padding: 0.5px ${themes.spacing.none};
+  margin: ${themes.spacing.none} auto;
+`
 const Span_Embolden = styled.span`
   font-weight: 700;
 `
-
+const Span_NewLine = styled.span`
+  display: block;
+`
 const Div_Main = styled.div`
   min-width: 360px;
   background-color: ${themes.color.bright};
@@ -38,9 +49,10 @@ const Div_Main = styled.div`
 const H1_MainHeading = styled.h1`
   color: ${themes.color.dark};
   margin: ${themes.spacing.none} auto;
+
   width: max-content;
   font-size: 3rem;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.4em;
   border-top: 1px solid ${themes.color.dark};
   border-bottom: 1px solid ${themes.color.dark}; ;
 `
@@ -49,11 +61,17 @@ const P_Text = styled.p`
   color: ${themes.color.dark};
   text-align: center;
   font-size: ${themes.fonts.xl};
-  margin: 0.3em;
+  margin-bottom: -1em;
+`
+
+const P_WelcomeText = styled.p`
+  color: ${themes.color.dark};
+  text-align: center;
+  font-size: ${themes.fonts.xl};
 `
 
 const Img_ProfilePic = styled.img`
-  width: 15em;
+  width: 22em;
   margin: ${themes.spacing.none} auto;
   display: block;
 `
