@@ -8,4 +8,5 @@ edit them. Due to the use of async functions and fetching, cards with "Loading..
 or error messages are displayed.
 
 [Demo](https://www.veprekj.cz/blog)
+
 ![](../images/Blog.png)

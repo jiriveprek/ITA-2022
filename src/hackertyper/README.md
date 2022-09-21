@@ -7,4 +7,5 @@ pressed, it either continues with slicing sample text, shows "Access Granted" on
 the whole application with "ESC". For styling I used Emotion Styled Components.
 
 [Demo](https://www.veprekj.cz/hackertyper)
+
 ![](../images/Hackertyper.png)
