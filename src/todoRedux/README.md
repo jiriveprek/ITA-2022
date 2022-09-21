@@ -5,5 +5,5 @@ You can filter between tasks via buttons above, complete or delete individual ta
 completed ones get a line through the text and a green tick mark. It is also possible to
 complete all at once and then delete everything that is marked as completed.
 
-![Demo](https://www.veprekj.cz/todoRedux)
+[Demo](https://www.veprekj.cz/todoRedux)
 ![](../images/Todo.png)
