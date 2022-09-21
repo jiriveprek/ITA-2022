@@ -32,6 +32,7 @@ export const urls = {
     gitHub: `${gitHubIcon}`,
   },
   gitHub: {
+    main: 'https://github.com/jiriveprek/ITA-2022',
     jsHistory: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/js-history',
     todolist: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/todoRedux',
     hackertyper: 'https://github.com/jiriveprek/ITA-2022/tree/main/src/hackertyper',

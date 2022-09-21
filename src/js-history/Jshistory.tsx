@@ -19,10 +19,10 @@ export class JSHistory extends React.Component {
           </Helmet>
           <Body>
             <Header>
-              <h1 css={{ marginTop: themes.spacing.none }}>
-                History of <Accent>JavaScript</Accent>
-              </h1>
-              <img src={icon} css={{ width: '10em' }} />
+              <H1_MainHeading>
+                History of <Span_Accent>JavaScript</Span_Accent>
+              </H1_MainHeading>
+              <Img_JsLogo src={icon} />
             </Header>
 
             <History />
@@ -37,15 +37,27 @@ export class JSHistory extends React.Component {
 
 const Body = styled.div`
   min-width: 360px;
+
   text-align: center;
 `
 const Header = styled.header`
   padding: ${themes.spacing.l} ${themes.spacing.xs};
+
   background: ${themes.color.dark};
-  color: ${themes.color.bright};
-  font-size: ${themes.fonts.xl};
 `
-const Accent = styled.span`
+
+const H1_MainHeading = styled.h1`
+  margin-top: ${themes.spacing.none};
+
+  font-size: 3rem;
+
+  color: ${themes.color.bright};
+`
+
+const Img_JsLogo = styled.img`
+  width: 10em;
+`
+
+const Span_Accent = styled.span`
   color: ${themes.color.yellow};
-  display: inline;
 `

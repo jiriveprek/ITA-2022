@@ -2,12 +2,41 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import express from 'express'
 import fs from 'fs'
+import swaggerJSDoc from 'swagger-jsdoc'
+import swaggerUi from 'swagger-ui-express'
+
+const swaggerDefinition = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Blog API',
+    version: '1.0.0',
+    description: 'A simple Blog API',
+    contanct: {
+      name: 'Jiří Vepřek',
+      url: 'https://www.veprekj.cz/',
+      email: 'veprekj.jiri@outlook.com',
+    },
+  },
+  servers: [
+    {
+      url: 'http://localhost:1234',
+    },
+  ],
+}
+
+const options = {
+  swaggerDefinition,
+  apis: ['src/index.ts'],
+}
+
+const swaggerSpec = swaggerJSDoc(options)
 
 const app = express()
 const port = 1234
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 type Article = {
   id: string
@@ -39,6 +68,53 @@ const postDataJSON = (dataBody: Articles) => {
   fs.writeFileSync(`${__dirname}/../dataBlog.json`, JSON.stringify(dataBody))
 }
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Articles:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The article ID
+ *           example: 581672
+ *         title:
+ *           type: string
+ *           description: Title of the article
+ *           example: New Article
+ *         content:
+ *           type: string
+ *           description: Content of the article
+ *           example: This is the content of the new article
+ *         slug:
+ *           type: string
+ *           description: Slug of the article based on it's title
+ *           example: newarticle
+ */
+
+/**
+ * @swagger
+ * /articles:
+ *   get:
+ *     summary: Retrieve a list of articles
+ *     description: Retrieve a list of articles from dataBlog.json
+ *     responses:
+ *       200:
+ *         description: A list of articles
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 articles:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Articles'
+ *       500:
+ *         description: Server error
+ */
+
 app.get('/articles', (req, res, next) => {
   try {
     const data = getDataJSON()
@@ -48,6 +124,28 @@ app.get('/articles', (req, res, next) => {
     next(err)
   }
 })
+
+/**
+ * @swagger
+ * /articles:
+ *   post:
+ *     summary: Post an article
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Articles'
+ *     responses:
+ *       200:
+ *         description: Create
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Articles'
+ *       500:
+ *         description: Server error
+ */
 
 app.post('/articles', (req, res, next) => {
   try {
@@ -66,6 +164,32 @@ app.post('/articles', (req, res, next) => {
   }
 })
 
+/**
+ * @swagger
+ * /articles/{id}:
+ *   get:
+ *     summary: Retrieve a single article
+ *     description: Retrieve a single article by it's own ID
+ *     parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           description: String ID of the article to retrieve
+ *           schema:
+ *             type: string
+ *     responses:
+ *       200:
+ *         description: The searched article
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Articles'
+ *       404:
+ *         description: The article was not found
+ *       500:
+ *         description: Server error
+ */
+
 app.get('/articles/:id', (req, res, next) => {
   try {
     const data = getDataJSON()
@@ -76,6 +200,28 @@ app.get('/articles/:id', (req, res, next) => {
     next(err)
   }
 })
+
+/**
+ * @swagger
+ * /articles/{id}:
+ *   delete:
+ *     summary: Delete a single article
+ *     description: Delete an article based on it's ID
+ *     parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           description: String ID of the article to retrieve
+ *           schema:
+ *             type: string
+ *     responses:
+ *       200:
+ *         description: The article was deleted
+ *       404:
+ *         description: The article was not found
+ *       500:
+ *         description: Server error
+ */
 
 app.delete('/articles/:id', (req, res, next) => {
   try {
@@ -90,6 +236,33 @@ app.delete('/articles/:id', (req, res, next) => {
     next(err)
   }
 })
+
+/**
+ * @swagger
+ * /articles/{id}:
+ *   post:
+ *     summary: Update the article
+ *     parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           description: String ID of the article to retrieve
+ *           schema:
+ *             type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Articles'
+ *     responses:
+ *       200:
+ *         description: Updated
+ *       404:
+ *         description: The article was not found
+ *       500:
+ *         description: Server error
+ */
 
 app.post('/articles/:id', (req, res, next) => {
   try {

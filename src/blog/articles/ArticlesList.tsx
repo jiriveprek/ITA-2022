@@ -26,9 +26,15 @@ export const Articles = () => {
     <div>
       <Div_ArticlesContainer>
         {logic.loading ? (
-          <Div_ErrorContainer>Loading...</Div_ErrorContainer>
+          <Div_MessageContainer>Loading...</Div_MessageContainer>
         ) : logic.errMsg ? (
-          <Div_ErrorContainer>{logic.errMsg}</Div_ErrorContainer>
+          <>
+            <Div_MessageContainer>{logic.errMsg}</Div_MessageContainer>
+            <Div_GitHubRefContainer>
+              For a fully working version, download this repository from{' '}
+              <A_RepoLink href={urls.gitHub.main}>GitHub</A_RepoLink> and run it locally.
+            </Div_GitHubRefContainer>
+          </>
         ) : (
           logic.articles.map(article => (
             <Div_ArticleContainer key={article.id}>
@@ -50,7 +56,6 @@ export const Articles = () => {
     </div>
   )
 }
-
 const Div_ArticlesContainer = styled.div`
   overflow: auto;
 
@@ -62,9 +67,9 @@ const Div_ArticlesContainer = styled.div`
   border-bottom: 1px solid ${themes.color.dark};
 `
 
-const Div_ErrorContainer = styled.div`
+const Div_MessageContainer = styled.div`
   margin: 0 auto;
-  margin-top: 5em;
+  margin-top: 3.5em;
   padding: 2em;
 
   box-sizing: border-box;
@@ -78,6 +83,20 @@ const Div_ErrorContainer = styled.div`
   @media (min-width: 560px) {
     font-size: 2rem;
   }
+`
+
+const Div_GitHubRefContainer = styled.div`
+  color: ${themes.color.darkred};
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1em;
+
+  @media (min-width: 560px) {
+    font-size: 2rem;
+  }
+`
+const A_RepoLink = styled.a`
+  color: ${themes.color.dark};
 `
 
 const H2_ArticleTitle = styled.h2`

@@ -11,6 +11,7 @@ import styled from '@emotion/styled'
 const xMark = '\u2716'
 const tickMark = '\u2714'
 const arrow = '\u276f'
+const plus = '\u002B'
 
 export const Todos = () => {
   return (
@@ -47,6 +48,19 @@ const TodoList = () => {
     }
     dispatch(todoSliceActions.addTodo(text))
     setInputText('')
+  }
+
+  const dragItem = React.useRef(0)
+  const dragOverItem = React.useRef(0)
+
+  const sortHandler = () => {
+    const indexDragItem = todos.findIndex(todo => todo.id === filterHandler()[dragItem.current].id)
+    const indexDragOverItem = todos.findIndex(
+      todo => todo.id === filterHandler()[dragOverItem.current].id
+    )
+    dispatch(
+      todoSliceActions.sortToDos({ dragItem: indexDragItem, dragItemOver: indexDragOverItem })
+    )
   }
 
   return (
@@ -88,22 +102,33 @@ const TodoList = () => {
                   createToDoHandler(inputText)
                 }}
               >
-                Add todo
+                {plus}
               </Button_Submit>
               <Button_CompleteAll onClick={() => dispatch(todoSliceActions.toggleCompleteAll())}>
                 {arrow}
               </Button_CompleteAll>
             </Div_HeaderContainer>
             <div>
-              {filterHandler().map(item => (
-                <Div_ListItemContainer key={item.id}>
+              {filterHandler().map((item, index) => (
+                <Div_ListItemContainer
+                  key={item.id}
+                  draggable='true'
+                  onDragStart={() => (dragItem.current = index)}
+                  onDragEnter={() => (dragOverItem.current = index)}
+                  onDragEnd={sortHandler}
+                >
                   <Button_Complete
                     completed={item.completed}
                     onClick={() => dispatch(todoSliceActions.toggleCompleted(item.id))}
                   >
                     {tickMark}
                   </Button_Complete>
-                  <Label completed={item.completed}>{item.text}</Label>
+                  <Label
+                    onClick={() => dispatch(todoSliceActions.toggleCompleted(item.id))}
+                    completed={item.completed}
+                  >
+                    {item.text}
+                  </Label>
                   <Button_Delete onClick={() => dispatch(todoSliceActions.deleteToDo(item.id))}>
                     {xMark}
                   </Button_Delete>
@@ -193,6 +218,7 @@ const Input = styled.input`
 
   padding: ${themes.spacing.s};
   padding-left: ${themes.spacing.l};
+  padding-right: ${themes.spacing.l};
 
   width: 100%;
   box-sizing: border-box;
@@ -209,8 +235,10 @@ type IsCompleted = {
 const Label = styled.label<IsCompleted>`
   display: block;
 
+  cursor: pointer;
+
   padding-left: ${themes.spacing.m};
-  padding-right: ${themes.spacing.s};
+  padding-right: ${themes.spacing.m};
 
   word-break: break-all;
 
@@ -237,7 +265,20 @@ const P_CountItems = styled.p`
 `
 
 const Button_Submit = styled.button`
-  display: none;
+  position: absolute;
+  right: 1.2%;
+  top: 12%;
+  z-index: 1;
+
+  color: ${themes.color.dark};
+
+  cursor: pointer;
+
+  border: none;
+
+  font-size: 2rem;
+
+  background-color: transparent;
 `
 const Button_CompleteAll = styled.button`
   position: absolute;

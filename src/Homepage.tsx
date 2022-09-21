@@ -1,30 +1,37 @@
+import { Helmet } from 'react-helmet'
+import { HelmetProvider } from 'react-helmet-async'
 import { themes } from './themes'
 import { urls } from './urls'
 import styled from '@emotion/styled'
 
 export const Homepage = () => {
   return (
-    <Div_Main>
-      <H1_MainHeading>MY PORTFOLIO</H1_MainHeading>
-      <div>
+    <HelmetProvider>
+      <Div_Main>
+        <Helmet>
+          <title>Jiří Vepřek | Home</title>
+        </Helmet>
+        <H1_MainHeading>MY PORTFOLIO</H1_MainHeading>
         <div>
-          <Img_ProfilePic src={urls.images.profilePic}></Img_ProfilePic>
+          <div>
+            <Img_ProfilePic src={urls.images.profilePic}></Img_ProfilePic>
+          </div>
+          <div>
+            <P_WelcomeText>
+              Welcome to my portfolio{' '}
+              <Span_NewLine>
+                made in <Span_Embolden>React</Span_Embolden>
+              </Span_NewLine>
+            </P_WelcomeText>
+            <Div_Line></Div_Line>
+            <P_Text>
+              My name is <Span_Embolden>Jiří Vepřek</Span_Embolden>
+            </P_Text>
+            <P_Text>I am a Web Developer</P_Text>
+          </div>
         </div>
-        <div>
-          <P_WelcomeText>
-            Welcome to my portfolio{' '}
-            <Span_NewLine>
-              made in <Span_Embolden>React</Span_Embolden>
-            </Span_NewLine>
-          </P_WelcomeText>
-          <Div_Line></Div_Line>
-          <P_Text>
-            My name is <Span_Embolden>Jiří Vepřek</Span_Embolden>
-          </P_Text>
-          <P_Text>I am a Web Developer</P_Text>
-        </div>
-      </div>
-    </Div_Main>
+      </Div_Main>
+    </HelmetProvider>
   )
 }
 const Div_Line = styled.div`

@@ -7,4 +7,5 @@ from the list to look at the full version, from this point it is possible to del
 edit them. Due to the use of async functions and fetching, cards with "Loading...",
 or error messages are displayed.
 
+![Demo](https://www.veprekj.cz/blog)
 ![](../images/Blog.png)

@@ -27,26 +27,31 @@ export class History extends React.Component {
 
 const Div_Main = styled.div`
   padding: ${themes.spacing.l};
+
   background: ${themes.color.bright};
 `
 
 const Div_TextContainer = styled.div`
-  max-width: 1060px;
   margin: ${themes.spacing.none} auto;
+
+  max-width: 1060px;
 `
-const P_Paragraph = styled.p`
+
+const H3_SubHeading = styled.h3`
+  margin-top: 0;
   @media (min-width: ${themes.mediaQuery.tablet}) {
     font-size: ${themes.fonts.m};
   }
   @media (min-width: ${themes.mediaQuery.desktop}) {
-    font-size: ${themes.fonts.l};
+    font-size: ${themes.fonts.m};
   }
 `
-const H3_SubHeading = styled.h3`
+
+const P_Paragraph = styled.p`
   @media (min-width: ${themes.mediaQuery.tablet}) {
-    font-size: ${themes.fonts.xl};
+    font-size: ${themes.fonts.s};
   }
   @media (min-width: ${themes.mediaQuery.desktop}) {
-    font-size: ${themes.fonts.xxl};
+    font-size: ${themes.fonts.s};
   }
 `

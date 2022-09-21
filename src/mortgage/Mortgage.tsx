@@ -70,6 +70,27 @@ const detailedCalculation = (arg: {
   return monthlyData
 }
 
+const displayTime = (index: number) => {
+  let year = Math.ceil((index + 1) / 12)
+  const month = year > 1 ? index + 1 - 12 * (year - 1) : index + 1
+  return `${year}/${month}`
+}
+
+//https://www.omnicalculator.com/finance/appreciation#how-to-calculate-appreciation
+const calculatePropertyValue = (arg: {
+  principalLoanAmount: number
+  loanTerm: number
+  inflation: number
+}) => {
+  const propertyValueIncrease = [{ propertyValue: arg.principalLoanAmount }]
+  for (let i = 1; i <= arg.loanTerm; i++) {
+    propertyValueIncrease.push({
+      propertyValue: arg.principalLoanAmount * (arg.inflation / 100 + 1) ** i,
+    })
+  }
+  return propertyValueIncrease
+}
+
 type Data = {
   interest: number
   principal: number
@@ -95,6 +116,12 @@ const getChartData = (data: Data[]) =>
     remainingLoan: roundTwoDecimals(items.remainingLoan),
   }))
 
+const getChartPropertyValue = (data: { propertyValue: number }[]) => {
+  return data.map(items => ({
+    propertyValue: roundTwoDecimals(items.propertyValue),
+  }))
+}
+
 export const MortgageCalculator = () => {
   const [principalLoanAmount, setPrincipalLoanAmount] = useState(1_000_000)
   const [interest, setInterest] = useState(5)
@@ -105,6 +132,13 @@ export const MortgageCalculator = () => {
   const inflatedDetails = inflatedDetailedCalc(details, inflation)
   const chartData = getChartData(details)
   const inflatedChartData = getChartData(inflatedDetails)
+
+  const propertyValueIncrease = calculatePropertyValue({
+    principalLoanAmount,
+    loanTerm,
+    inflation,
+  })
+  const propertyValueChartData = getChartPropertyValue(propertyValueIncrease)
 
   return (
     <HelmetProvider>
@@ -175,7 +209,7 @@ export const MortgageCalculator = () => {
             <Table_StyledTable>
               <thead>
                 <tr>
-                  <th>Month</th>
+                  <th>Year / Month</th>
                   <th>Principal</th>
                   <th>Interest</th>
                   <th>Amount</th>
@@ -184,7 +218,7 @@ export const MortgageCalculator = () => {
               <tbody>
                 {details?.map((tableRow, index) => (
                   <tr key={index}>
-                    <Td_StyledTd>{index + 1}.</Td_StyledTd>
+                    <Td_StyledTd>{displayTime(index)}.</Td_StyledTd>
                     <Td_StyledTd>{czkFormatting(tableRow.principal)}</Td_StyledTd>
                     <Td_StyledTd>{czkFormatting(tableRow.interest)}</Td_StyledTd>
                     <Td_StyledTd>{czkFormatting(tableRow.remainingLoan)}</Td_StyledTd>
@@ -193,7 +227,7 @@ export const MortgageCalculator = () => {
               </tbody>
             </Table_StyledTable>
           </div>
-          <div>
+          <Div_PaymentCharts>
             <H2_Subheadings>Payment charts</H2_Subheadings>
             <LineChart width={360} height={300} data={chartData}>
               <XAxis dataKey=' ' />
@@ -213,7 +247,7 @@ export const MortgageCalculator = () => {
               <Line type='monotone' dataKey='principal' stroke={themes.color.jazzberryJam} />
               <Line type='monotone' dataKey='interest' stroke={themes.color.dukeBlue} />
             </LineChart>
-          </div>
+          </Div_PaymentCharts>
         </Div_TableChartContainer>
 
         <H2_Subheadings>Payment charts with inflation</H2_Subheadings>
@@ -237,6 +271,18 @@ export const MortgageCalculator = () => {
             <Line type='monotone' dataKey='interest' stroke={themes.color.dukeBlue} />
           </LineChart>
         </Div_InflatedCharts>
+
+        <H2_Subheadings>Yearly property value increase</H2_Subheadings>
+        <Div_PropertyValueChart>
+          <LineChart width={360} height={300} data={propertyValueChartData}>
+            <XAxis dataKey=' ' />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <CartesianGrid stroke={themes.color.bright} strokeDasharray='5 5' />
+            <Line type='monotone' dataKey='propertyValue' stroke={themes.color.darkred} />
+          </LineChart>
+        </Div_PropertyValueChart>
       </Div_Main>
     </HelmetProvider>
   )
@@ -246,10 +292,13 @@ const Div_Main = styled.div`
   padding-top: ${themes.spacing.l};
 
   width: 100%;
-  height: 200vh;
+  height: 240vh;
   min-width: 360px;
 
   background-color: ${themes.color.bright};
+  @media (max-width: ${themes.mediaQuery.extraLarge}) {
+    height: 290vh;
+  }
   @media (max-width: ${themes.mediaQuery.large}) {
     height: 330vh;
   }
@@ -343,11 +392,17 @@ const Div_TableChartContainer = styled.div`
   }
 `
 
+const Div_PaymentCharts = styled.div`
+  margin: ${themes.spacing.none} auto;
+
+  width: max-content;
+`
+
 const Div_InflatedCharts = styled.div`
   display: flex;
   gap: 2em;
 
-  margin: ${themes.spacing.none} auto;
+  margin: ${themes.spacing.m} auto;
   margin-top: 2em;
 
   width: max-content;
@@ -355,6 +410,13 @@ const Div_InflatedCharts = styled.div`
   @media (max-width: ${themes.mediaQuery.large}) {
     flex-direction: column;
   }
+`
+
+const Div_PropertyValueChart = styled.div`
+  margin: ${themes.spacing.none} auto;
+  margin-top: 2em;
+
+  width: max-content;
 `
 
 const H2_Subheadings = styled.h2`

@@ -35,7 +35,7 @@ const Div_SectionHeading = styled.div`
   background: ${themes.color.dark};
   color: ${themes.color.bright};
 
-  font-size: ${themes.fonts.xl};
+  font-size: ${themes.fonts.m};
 `
 
 const Div_FlexContainer = styled.div`

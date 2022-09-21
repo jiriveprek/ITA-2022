@@ -36,9 +36,15 @@ export class Navbar extends React.Component<Props, State> {
         </NavbarInnerContainer>
         {this.state.isExtended && (
           <NavbarExtendedContainer>
-            <NavbarLinkExtended to={urls.homepage}>Home</NavbarLinkExtended>
-            <NavbarLinkExtended to={urls.projects}>Projects</NavbarLinkExtended>
-            <NavbarLinkExtended to={urls.cv}>CV</NavbarLinkExtended>
+            <NavbarLinkExtended onClick={this.handleClick} to={urls.homepage}>
+              Home
+            </NavbarLinkExtended>
+            <NavbarLinkExtended onClick={this.handleClick} to={urls.projects}>
+              Projects
+            </NavbarLinkExtended>
+            <NavbarLinkExtended onClick={this.handleClick} to={urls.cv}>
+              CV
+            </NavbarLinkExtended>
           </NavbarExtendedContainer>
         )}
         <Outlet />
@@ -53,12 +59,11 @@ type isExtendedNav = {
 
 const NavbarContainer = styled.nav<isExtendedNav>`
   opacity: 99%;
-  position: sticky;
-  top: 0;
+  position: ${props => (props.isExtended ? 'absolute' : 'relative')};
 
   min-width: 360px;
   width: 100%;
-  height: ${props => (props.isExtended ? '100vh' : '80px')};
+  height: ${props => (props.isExtended ? 'max-content' : '80px')};
 
   border-bottom: 1px solid ${themes.color.bright};
 
@@ -69,6 +74,7 @@ const NavbarContainer = styled.nav<isExtendedNav>`
 
   @media (min-width: ${themes.mediaQuery.tabletNav}) {
     height: 80px;
+    position: relative;
   }
 `
 

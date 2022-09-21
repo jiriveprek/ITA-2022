@@ -44,8 +44,9 @@ export class HistoryLogo extends React.Component {
 }
 
 const Div_Main = styled.div`
-  background: ${themes.color.bright};
   padding-bottom: ${themes.spacing.m};
+
+  background: ${themes.color.bright};
 `
 
 const Div_SectionHeading = styled.div`
@@ -55,18 +56,14 @@ const Div_SectionHeading = styled.div`
   background: ${themes.color.dark};
   color: ${themes.color.bright};
 
-  font-size: ${themes.fonts.xl};
+  font-size: ${themes.fonts.m};
 `
 const Div_DesignHistory = styled.div`
   padding: ${themes.spacing.none} ${themes.spacing.l};
 `
 const H3_SubHeading = styled.h3`
-  @media (min-width: ${themes.mediaQuery.tablet}) {
-    font-size: ${themes.fonts.xl};
-  }
-  @media (min-width: ${themes.mediaQuery.desktop}) {
-    font-size: ${themes.fonts.xxl};
-  }
+  margin-top: 0;
+  font-size: ${themes.fonts.m};
 `
 const Span_Accent = styled.span`
   color: ${themes.color.yellow};
@@ -81,14 +78,15 @@ const Section_Design = styled.section`
 `
 const P_Paragraph = styled.p`
   @media (min-width: ${themes.mediaQuery.tablet}) {
-    font-size: ${themes.fonts.m};
+    font-size: ${themes.fonts.s};
   }
   @media (min-width: ${themes.mediaQuery.desktop}) {
-    font-size: ${themes.fonts.l};
+    font-size: ${themes.fonts.s};
   }
 `
 const Div_Divider = styled.div`
   padding: ${themes.spacing.none} ${themes.spacing.l};
+
   @media (min-width: ${themes.mediaQuery.desktop}) {
     border-right: 2px solid ${themes.color.dark};
   }

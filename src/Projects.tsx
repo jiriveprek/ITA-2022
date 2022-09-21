@@ -1,3 +1,4 @@
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { themes } from './themes'
 import { urls } from './urls'
@@ -5,118 +6,123 @@ import styled from '@emotion/styled'
 
 export const Projects = () => {
   return (
-    <Div_Main>
-      <H1_MainHeading>PROJECTS</H1_MainHeading>
+    <HelmetProvider>
+      <Div_Main>
+        <Helmet>
+          <title>Jiří Vepřek | Projects</title>
+        </Helmet>
+        <H1_MainHeading>PROJECTS</H1_MainHeading>
 
-      <Div_ProjectContainer>
-        <Link_LinkImg to={urls.jsHistory}>
-          <Img_ProjectImg src={urls.images.jsHistory}></Img_ProjectImg>
-        </Link_LinkImg>
-        <Div_TextContainer>
-          <H2_ProjectHeading>JS History</H2_ProjectHeading>
-          <P_ProjectDescription>
-            A simple static web application made with React classes split into 4 components. For
-            styling I used Emotion Styled Components.
-          </P_ProjectDescription>
-          <a href={urls.gitHub.jsHistory}>
-            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-          </a>
-        </Div_TextContainer>
-      </Div_ProjectContainer>
+        <Div_ProjectContainer>
+          <Link_LinkImg to={urls.jsHistory}>
+            <Img_ProjectImg src={urls.images.jsHistory}></Img_ProjectImg>
+          </Link_LinkImg>
+          <Div_TextContainer>
+            <H2_ProjectHeading>JS History</H2_ProjectHeading>
+            <P_ProjectDescription>
+              A simple static web application made with React classes split into 4 components. For
+              styling I used Emotion Styled Components.
+            </P_ProjectDescription>
+            <a href={urls.gitHub.jsHistory}>
+              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+            </a>
+          </Div_TextContainer>
+        </Div_ProjectContainer>
 
-      <Div_ProjectContainerReverse>
-        <Link_LinkImg to={urls.todolist}>
-          <Img_ProjectImg src={urls.images.Todo}></Img_ProjectImg>
-        </Link_LinkImg>
-        <Div_TextContainer>
-          <H2_ProjectHeading>To-do list</H2_ProjectHeading>
-          <P_ProjectDescription>
-            A simple To-do list application made with React and Redux Toolkit for state management.
-            You can filter between tasks via buttons above, complete or delete individual tasks,
-            completed ones get a line through the text and a green tick mark. It is also possible to
-            complete all at once and then delete everything that is marked as completed. For styling
-            I used Emotion Styled Components.
-          </P_ProjectDescription>
-          <a href={urls.gitHub.todolist}>
-            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-          </a>
-        </Div_TextContainer>
-      </Div_ProjectContainerReverse>
+        <Div_ProjectContainerReverse>
+          <Link_LinkImg to={urls.todolist}>
+            <Img_ProjectImg src={urls.images.Todo}></Img_ProjectImg>
+          </Link_LinkImg>
+          <Div_TextContainer>
+            <H2_ProjectHeading>To-do list</H2_ProjectHeading>
+            <P_ProjectDescription>
+              A simple To-do list application made with React and Redux Toolkit for state
+              management. You can filter between tasks via buttons above, complete or delete
+              individual tasks, completed ones get a line through the text and a green tick mark. It
+              is also possible to complete all at once and then delete everything that is marked as
+              completed. For styling I used Emotion Styled Components.
+            </P_ProjectDescription>
+            <a href={urls.gitHub.todolist}>
+              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+            </a>
+          </Div_TextContainer>
+        </Div_ProjectContainerReverse>
 
-      <Div_ProjectContainer>
-        <Link_LinkImg to={urls.hackertyper}>
-          <Img_ProjectImg src={urls.images.HackerTyper}></Img_ProjectImg>
-        </Link_LinkImg>
-        <Div_TextContainer>
-          <H2_ProjectHeading>HackerTyper</H2_ProjectHeading>
-          <P_ProjectDescription>
-            A simple HackerTyper web application made with React and React hooks for state
-            management. Application listens for keyDown events and according to which key was
-            pressed, it either continues with slicing sample text, shows {`"Access Granted"`} on
-            {`"shift"`} key press, {`"Access Denied"`} on {`"ctrl"`} key press or resets state of
-            the whole application with {`"ESC"`}. For styling I used Emotion Styled Components.
-          </P_ProjectDescription>
-          <a href={urls.gitHub.hackertyper}>
-            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-          </a>
-        </Div_TextContainer>
-      </Div_ProjectContainer>
+        <Div_ProjectContainer>
+          <Link_LinkImg to={urls.hackertyper}>
+            <Img_ProjectImg src={urls.images.HackerTyper}></Img_ProjectImg>
+          </Link_LinkImg>
+          <Div_TextContainer>
+            <H2_ProjectHeading>HackerTyper</H2_ProjectHeading>
+            <P_ProjectDescription>
+              A simple HackerTyper web application made with React and React hooks for state
+              management. Application listens for keyDown events and according to which key was
+              pressed, it either continues with slicing sample text, shows {`"Access Granted"`} on
+              {`"shift"`} key press, {`"Access Denied"`} on {`"ctrl"`} key press or resets state of
+              the whole application with {`"ESC"`}. For styling I used Emotion Styled Components.
+            </P_ProjectDescription>
+            <a href={urls.gitHub.hackertyper}>
+              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+            </a>
+          </Div_TextContainer>
+        </Div_ProjectContainer>
 
-      <Div_ProjectContainerReverse>
-        <Link_LinkImg to={urls.mortgage}>
-          <Img_ProjectImg src={urls.images.Mortgage}></Img_ProjectImg>
-        </Link_LinkImg>
-        <Div_TextContainer>
-          <H2_ProjectHeading>Mortgage Calculator</H2_ProjectHeading>
-          <P_ProjectDescription>
-            A simple Mortgage Calculator web application made with React, React hooks for state
-            management and a composable charting library called Recharts. Depending on the user
-            input, this application calculates total monthly payment, Amortization schedule
-            breakdown table shows the amount of principal and interest the monthly payment is made
-            of and the remaning loan. All of this is displayed on Payment charts. For styling I used
-            Emotion Styled Components.
-          </P_ProjectDescription>
-          <a href={urls.gitHub.mortgage}>
-            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-          </a>
-        </Div_TextContainer>
-      </Div_ProjectContainerReverse>
+        <Div_ProjectContainerReverse>
+          <Link_LinkImg to={urls.mortgage}>
+            <Img_ProjectImg src={urls.images.Mortgage}></Img_ProjectImg>
+          </Link_LinkImg>
+          <Div_TextContainer>
+            <H2_ProjectHeading>Mortgage Calculator</H2_ProjectHeading>
+            <P_ProjectDescription>
+              A simple Mortgage Calculator web application made with React, React hooks for state
+              management and a composable charting library called Recharts. Depending on the user
+              input, this application calculates total monthly payment, Amortization schedule
+              breakdown table shows the amount of principal and interest the monthly payment is made
+              of and the remaning loan. All of this is displayed on Payment charts. For styling I
+              used Emotion Styled Components.
+            </P_ProjectDescription>
+            <a href={urls.gitHub.mortgage}>
+              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+            </a>
+          </Div_TextContainer>
+        </Div_ProjectContainerReverse>
 
-      <Div_ProjectContainer>
-        <Link_LinkImg to={urls.memoryGame}>
-          <Img_ProjectImg src={urls.images.MemoryGame}></Img_ProjectImg>
-        </Link_LinkImg>
-        <Div_TextContainer>
-          <H2_ProjectHeading>Memory Game</H2_ProjectHeading>
-          <P_ProjectDescription>
-            A simple Cat Memory Game web application made with React and React hooks. For styling I
-            used Emotion Styled Components.
-          </P_ProjectDescription>
-          <a href={urls.gitHub.memoryGame}>
-            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-          </a>
-        </Div_TextContainer>
-      </Div_ProjectContainer>
-      <Div_ProjectContainerReverse>
-        <Link_LinkImg to={urls.blog}>
-          <Img_ProjectImg src={urls.images.Blog}></Img_ProjectImg>
-        </Link_LinkImg>
-        <Div_TextContainer>
-          <H2_ProjectHeading>Blog app</H2_ProjectHeading>
-          <P_ProjectDescription>
-            Blog web application made with React, React hooks and web application framework
-            Express.js for communicating with backend. User is able to create articles, if the
-            conditions are met {`=>`} input fields can not be empty, click on individual articles
-            from the list to look at the full version, from this point it is possible to delete or
-            edit them. Due to the use of async functions and fetching, cards with {`"Loading..."`},
-            or error messages are displayed. For styling I used Emotion Styled Components.
-          </P_ProjectDescription>
-          <a href={urls.gitHub.blog}>
-            <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-          </a>
-        </Div_TextContainer>
-      </Div_ProjectContainerReverse>
-    </Div_Main>
+        <Div_ProjectContainer>
+          <Link_LinkImg to={urls.memoryGame}>
+            <Img_ProjectImg src={urls.images.MemoryGame}></Img_ProjectImg>
+          </Link_LinkImg>
+          <Div_TextContainer>
+            <H2_ProjectHeading>Memory Game</H2_ProjectHeading>
+            <P_ProjectDescription>
+              A simple Cat Memory Game web application made with React and React hooks. For styling
+              I used Emotion Styled Components.
+            </P_ProjectDescription>
+            <a href={urls.gitHub.memoryGame}>
+              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+            </a>
+          </Div_TextContainer>
+        </Div_ProjectContainer>
+        <Div_ProjectContainerReverse>
+          <Link_LinkImg to={urls.blog}>
+            <Img_ProjectImg src={urls.images.Blog}></Img_ProjectImg>
+          </Link_LinkImg>
+          <Div_TextContainer>
+            <H2_ProjectHeading>Blog app</H2_ProjectHeading>
+            <P_ProjectDescription>
+              Blog web application made with React, React hooks and web application framework
+              Express.js for communicating with backend. User is able to create articles, if the
+              conditions are met {`=>`} input fields can not be empty, click on individual articles
+              from the list to look at the full version, from this point it is possible to delete or
+              edit them. Due to the use of async functions and fetching, cards with {`"Loading..."`}
+              , or error messages are displayed. For styling I used Emotion Styled Components.
+            </P_ProjectDescription>
+            <a href={urls.gitHub.blog}>
+              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
+            </a>
+          </Div_TextContainer>
+        </Div_ProjectContainerReverse>
+      </Div_Main>
+    </HelmetProvider>
   )
 }
 

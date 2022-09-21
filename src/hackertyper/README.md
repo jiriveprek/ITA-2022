@@ -6,4 +6,5 @@ pressed, it either continues with slicing sample text, shows "Access Granted" on
 "shift" key press, "Access Denied" on "ctrl" key press or resets state of
 the whole application with "ESC". For styling I used Emotion Styled Components.
 
+![Demo](https://www.veprekj.cz/hackertyper)
 ![](../images/Hackertyper.png)

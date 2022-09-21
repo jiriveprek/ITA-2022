@@ -60,6 +60,11 @@ const todoSlice = createSlice({
       saveStateLocalStorage(keyLS, state)
       return state
     },
+    sortToDos(state, action: PayloadAction<{ dragItem: number; dragItemOver: number }>) {
+      const draggedItem = state.splice(action.payload.dragItem, 1)[0]
+      state.splice(action.payload.dragItemOver, 0, draggedItem)
+      saveStateLocalStorage(keyLS, state)
+    },
   },
 })
 
