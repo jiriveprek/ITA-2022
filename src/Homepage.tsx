@@ -34,51 +34,65 @@ export const Homepage = () => {
     </HelmetProvider>
   )
 }
-const Div_Line = styled.div`
-  background-color: ${themes.color.dark};
-  width: 15em;
-  padding: 0.5px ${themes.spacing.none};
-  margin: ${themes.spacing.none} auto;
-`
-const Span_Embolden = styled.span`
-  font-weight: 700;
-`
-const Span_NewLine = styled.span`
-  display: block;
-`
+
 const Div_Main = styled.div`
-  min-width: 360px;
-  background-color: ${themes.color.bright};
   padding-top: 2em;
-  height: 110vh;
+
+  min-width: 360px;
 `
 
 const H1_MainHeading = styled.h1`
-  color: ${themes.color.dark};
   margin: ${themes.spacing.none} auto;
+  margin-bottom: 0.4em;
 
   width: max-content;
+
   font-size: 3rem;
-  margin-bottom: 0.4em;
+
+  color: ${themes.color.dark};
+
   border-top: 1px solid ${themes.color.dark};
   border-bottom: 1px solid ${themes.color.dark}; ;
 `
 
-const P_Text = styled.p`
-  color: ${themes.color.dark};
-  text-align: center;
-  font-size: ${themes.fonts.xl};
-  margin-bottom: -1em;
+const Img_ProfilePic = styled.img`
+  display: block;
+
+  margin: ${themes.spacing.none} auto;
+
+  width: 22em;
+`
+
+const Div_Line = styled.div`
+  padding: 0.5px ${themes.spacing.none};
+  margin: ${themes.spacing.none} auto;
+
+  width: 15em;
+
+  background-color: ${themes.color.dark};
 `
 
 const P_WelcomeText = styled.p`
-  color: ${themes.color.dark};
   text-align: center;
+
   font-size: ${themes.fonts.xl};
+
+  color: ${themes.color.dark};
 `
 
-const Img_ProfilePic = styled.img`
-  width: 22em;
-  margin: ${themes.spacing.none} auto;
+const P_Text = styled.p`
+  margin-bottom: -1em;
+  text-align: center;
+
+  font-size: ${themes.fonts.xl};
+
+  color: ${themes.color.dark};
+`
+
+const Span_NewLine = styled.span`
   display: block;
+`
+
+const Span_Embolden = styled.span`
+  font-weight: 700;
 `

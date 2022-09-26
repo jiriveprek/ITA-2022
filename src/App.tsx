@@ -11,8 +11,15 @@ import { Projects } from './Projects'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@emotion/react'
 import { Todos } from './todoRedux/Todo'
+import { injectGlobal } from '@emotion/css'
 import { themes } from './themes'
 import { urls } from './urls'
+
+injectGlobal`
+  html {
+    background-color: ${themes.color.bright};
+  }
+`
 
 export const App = () => {
   return (

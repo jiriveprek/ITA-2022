@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { generateId } from '../utils/utils'
 
 type Todo = {
-  id: number
+  id: string
   text: string
   completed: boolean
 }
@@ -33,14 +33,14 @@ const todoSlice = createSlice({
   reducers: {
     addTodo(state, action: PayloadAction<string>) {
       const newToDo = {
-        id: generateId(),
+        id: generateId().toString(),
         text: action.payload,
         completed: false,
       }
       state.unshift(newToDo)
       saveStateLocalStorage(keyLS, state)
     },
-    toggleCompleted(state, action: PayloadAction<number>) {
+    toggleCompleted(state, action: PayloadAction<string>) {
       state.map(item =>
         item.id === action.payload ? (item.completed = !item.completed) : item.completed
       )
@@ -50,7 +50,7 @@ const todoSlice = createSlice({
       state.map(item => (item.completed = true))
       saveStateLocalStorage(keyLS, state)
     },
-    deleteToDo(state, action: PayloadAction<number>) {
+    deleteToDo(state, action: PayloadAction<string>) {
       state = state.filter(item => item.id !== action.payload)
       saveStateLocalStorage(keyLS, state)
       return state

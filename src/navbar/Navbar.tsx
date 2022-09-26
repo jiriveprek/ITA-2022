@@ -59,16 +59,16 @@ type isExtendedNav = {
 
 const NavbarContainer = styled.nav<isExtendedNav>`
   opacity: 99%;
-  position: ${props => (props.isExtended ? 'absolute' : 'relative')};
 
   min-width: 360px;
   width: 100%;
-  height: ${props => (props.isExtended ? 'max-content' : '80px')};
+  height: 80px;
 
   border-bottom: 1px solid ${themes.color.bright};
 
   display: flex;
   flex-direction: column;
+  position: relative;
   z-index: 1000;
   background-color: ${themes.color.dark};
 
@@ -130,9 +130,13 @@ const OpenLinksButton = styled.button`
 `
 
 const NavbarExtendedContainer = styled.div`
+  z-index: 1000;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${themes.color.dark};
+  border-bottom: 1px solid ${themes.color.bright};
 
   @media (min-width: ${themes.mediaQuery.tabletNav}) {
     display: none;

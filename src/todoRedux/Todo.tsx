@@ -2,6 +2,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 import { todoSliceActions } from './todoSlice'
 
+import { DragDropContext, Draggable, DropResult, Droppable } from 'react-beautiful-dnd'
 import { RootState, store } from './store'
 import { themes } from '../themes'
 import { useAppDispatch, useAppSelector } from './hooks'
@@ -50,17 +51,18 @@ const TodoList = () => {
     setInputText('')
   }
 
-  const dragItem = React.useRef(0)
-  const dragOverItem = React.useRef(0)
-
-  const sortHandler = () => {
-    const indexDragItem = todos.findIndex(todo => todo.id === filterHandler()[dragItem.current].id)
-    const indexDragOverItem = todos.findIndex(
-      todo => todo.id === filterHandler()[dragOverItem.current].id
-    )
-    dispatch(
-      todoSliceActions.sortToDos({ dragItem: indexDragItem, dragItemOver: indexDragOverItem })
-    )
+  const sortHandler = ({ destination, source }: DropResult) => {
+    if (!destination) {
+      return
+    } else {
+      const indexDragItem = todos.findIndex(todo => todo.id === filterHandler()[source.index].id)
+      const indexDragOverItem = todos.findIndex(
+        todo => todo.id === filterHandler()[destination.index].id
+      )
+      dispatch(
+        todoSliceActions.sortToDos({ dragItem: indexDragItem, dragItemOver: indexDragOverItem })
+      )
+    }
   }
 
   return (
@@ -108,33 +110,54 @@ const TodoList = () => {
                 {arrow}
               </Button_CompleteAll>
             </Div_HeaderContainer>
-            <div>
-              {filterHandler().map((item, index) => (
-                <Div_ListItemContainer
-                  key={item.id}
-                  draggable='true'
-                  onDragStart={() => (dragItem.current = index)}
-                  onDragEnter={() => (dragOverItem.current = index)}
-                  onDragEnd={sortHandler}
-                >
-                  <Button_Complete
-                    completed={item.completed}
-                    onClick={() => dispatch(todoSliceActions.toggleCompleted(item.id))}
-                  >
-                    {tickMark}
-                  </Button_Complete>
-                  <Label
-                    onClick={() => dispatch(todoSliceActions.toggleCompleted(item.id))}
-                    completed={item.completed}
-                  >
-                    {item.text}
-                  </Label>
-                  <Button_Delete onClick={() => dispatch(todoSliceActions.deleteToDo(item.id))}>
-                    {xMark}
-                  </Button_Delete>
-                </Div_ListItemContainer>
-              ))}
-            </div>
+            <DragDropContext onDragEnd={e => sortHandler(e)}>
+              <Droppable droppableId='1'>
+                {provided => {
+                  return (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                      {filterHandler().map((item, index) => {
+                        return (
+                          <Draggable key={item.id} index={index} draggableId={item.id}>
+                            {provided => {
+                              return (
+                                <Div_ListItemContainer
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                >
+                                  <Button_Complete
+                                    completed={item.completed}
+                                    onClick={() =>
+                                      dispatch(todoSliceActions.toggleCompleted(item.id))
+                                    }
+                                  >
+                                    {tickMark}
+                                  </Button_Complete>
+                                  <Label
+                                    onClick={() =>
+                                      dispatch(todoSliceActions.toggleCompleted(item.id))
+                                    }
+                                    completed={item.completed}
+                                  >
+                                    {item.text}
+                                  </Label>
+                                  <Button_Delete
+                                    onClick={() => dispatch(todoSliceActions.deleteToDo(item.id))}
+                                  >
+                                    {xMark}
+                                  </Button_Delete>
+                                </Div_ListItemContainer>
+                              )
+                            }}
+                          </Draggable>
+                        )
+                      })}
+                      {provided.placeholder}
+                    </div>
+                  )
+                }}
+              </Droppable>
+            </DragDropContext>
           </form>
           <Div_TodoFooter>
             <P_CountItems>{todos.filter(todo => !todo.completed).length} items left</P_CountItems>
@@ -152,8 +175,8 @@ const TodoList = () => {
 
 const Div_Main = styled.div`
   min-width: 360px;
-  height: 100vh;
-  background-color: ${themes.color.bright};
+  // height: 100vh;
+  // background-color: ${themes.color.bright};
 `
 
 const Div_TodoContainer = styled.div`
@@ -174,11 +197,13 @@ const Div_HeaderContainer = styled.div`
 const Div_ListItemContainer = styled.div`
   position: relative;
 
+  margin-bottom: -0.1em;
   padding: ${themes.spacing.xs};
 
   border-left: 1px solid ${themes.color.dark};
   border-right: 1px solid ${themes.color.dark};
   border-bottom: 1px solid ${themes.color.dark};
+  border: 1px solid ${themes.color.dark};
 
   background-color: ${themes.color.bright};
 `

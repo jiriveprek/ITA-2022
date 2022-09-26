@@ -40,10 +40,10 @@ const Div_Main = styled.div`
   padding-top: 1em;
 
   min-width: 360px;
-  height: 110vh;
+  //height: 110vh;
 
   color: ${themes.color.bright};
-  background-color: ${themes.color.bright};
+  //background-color: ${themes.color.bright};
 `
 
 const Div_BlogWrapper = styled.div`

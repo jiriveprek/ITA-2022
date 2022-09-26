@@ -292,10 +292,10 @@ const Div_Main = styled.div`
   padding-top: ${themes.spacing.l};
 
   width: 100%;
-  height: 240vh;
+  //height: 240vh;
   min-width: 360px;
 
-  background-color: ${themes.color.bright};
+  //background-color: ${themes.color.bright};
   @media (max-width: ${themes.mediaQuery.extraLarge}) {
     height: 290vh;
   }

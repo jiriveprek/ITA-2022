@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 export const CV = () => {
   return (
     <HelmetProvider>
-      <Div_Main>
+      <div>
         <Helmet>
           <title>Jiří Vepřek | CV</title>
         </Helmet>
@@ -17,7 +17,7 @@ export const CV = () => {
           <A_Link href='mailto: veprekj.jiri@outlook.com'>veprekj.jiri@outlook.com</A_Link>
           <H2_SubHeading>Skills</H2_SubHeading>
           <P_SectionText>
-            React.js, Node.js, JavaScript,TypeScript, HTML, CSS, Styled Components, Git
+            React.js, Node.js, JavaScript, TypeScript, HTML, CSS, Styled Components, Git
           </P_SectionText>
           <H2_SubHeading>Education</H2_SubHeading>
           <H3_SectionSubHeading>Univerzita Palackého v Olomouci</H3_SectionSubHeading>
@@ -36,15 +36,10 @@ export const CV = () => {
           <P_SectionText>Czech - native language</P_SectionText>
           <P_SectionText>English - B2</P_SectionText>
         </Div_Content>
-      </Div_Main>
+      </div>
     </HelmetProvider>
   )
 }
-
-const Div_Main = styled.div`
-  height: 200vh;
-  background-color: ${themes.color.bright};
-`
 
 const Div_Content = styled.div`
   padding-left: 15%;

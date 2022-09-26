@@ -12,189 +12,158 @@ export const Projects = () => {
           <title>Jiří Vepřek | Projects</title>
         </Helmet>
         <H1_MainHeading>PROJECTS</H1_MainHeading>
+        <Div_ProjectsContainer>
+          <Div_Card>
+            <Div_CardHeader>
+              <P_CardText>JS History</P_CardText>
+              <a href={urls.gitHub.jsHistory}>
+                <img src={urls.images.gitHubLight}></img>
+              </a>
+            </Div_CardHeader>
+            <Link_CardLink to={urls.jsHistory}>
+              <Img_ProjectImg src={urls.images.jsHistory}></Img_ProjectImg>
+            </Link_CardLink>
+          </Div_Card>
 
-        <Div_ProjectContainer>
-          <Link_LinkImg to={urls.jsHistory}>
-            <Img_ProjectImg src={urls.images.jsHistory}></Img_ProjectImg>
-          </Link_LinkImg>
-          <Div_TextContainer>
-            <H2_ProjectHeading>JS History</H2_ProjectHeading>
-            <P_ProjectDescription>
-              A simple static web application made with React classes split into 4 components. For
-              styling I used Emotion Styled Components.
-            </P_ProjectDescription>
-            <a href={urls.gitHub.jsHistory}>
-              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-            </a>
-          </Div_TextContainer>
-        </Div_ProjectContainer>
+          <Div_Card>
+            <Div_CardHeader>
+              <P_CardText>To-do list</P_CardText>
+              <a href={urls.gitHub.todolist}>
+                <img src={urls.images.gitHubLight}></img>
+              </a>
+            </Div_CardHeader>
+            <Link_CardLink to={urls.todolist}>
+              <Img_ProjectImg src={urls.images.Todo}></Img_ProjectImg>
+            </Link_CardLink>
+          </Div_Card>
 
-        <Div_ProjectContainerReverse>
-          <Link_LinkImg to={urls.todolist}>
-            <Img_ProjectImg src={urls.images.Todo}></Img_ProjectImg>
-          </Link_LinkImg>
-          <Div_TextContainer>
-            <H2_ProjectHeading>To-do list</H2_ProjectHeading>
-            <P_ProjectDescription>
-              A simple To-do list application made with React and Redux Toolkit for state
-              management. You can filter between tasks via buttons above, complete or delete
-              individual tasks, completed ones get a line through the text and a green tick mark. It
-              is also possible to complete all at once and then delete everything that is marked as
-              completed. For styling I used Emotion Styled Components.
-            </P_ProjectDescription>
-            <a href={urls.gitHub.todolist}>
-              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-            </a>
-          </Div_TextContainer>
-        </Div_ProjectContainerReverse>
+          <Div_Card>
+            <Div_CardHeader>
+              <P_CardText>HackerTyper</P_CardText>
+              <a href={urls.gitHub.hackertyper}>
+                <img src={urls.images.gitHubLight}></img>
+              </a>
+            </Div_CardHeader>
+            <Link_CardLink to={urls.hackertyper}>
+              <Img_ProjectImg src={urls.images.HackerTyper}></Img_ProjectImg>
+            </Link_CardLink>
+          </Div_Card>
 
-        <Div_ProjectContainer>
-          <Link_LinkImg to={urls.hackertyper}>
-            <Img_ProjectImg src={urls.images.HackerTyper}></Img_ProjectImg>
-          </Link_LinkImg>
-          <Div_TextContainer>
-            <H2_ProjectHeading>HackerTyper</H2_ProjectHeading>
-            <P_ProjectDescription>
-              A simple HackerTyper web application made with React and React hooks for state
-              management. Application listens for keyDown events and according to which key was
-              pressed, it either continues with slicing sample text, shows {`"Access Granted"`} on
-              {`"shift"`} key press, {`"Access Denied"`} on {`"ctrl"`} key press or resets state of
-              the whole application with {`"ESC"`}. For styling I used Emotion Styled Components.
-            </P_ProjectDescription>
-            <a href={urls.gitHub.hackertyper}>
-              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-            </a>
-          </Div_TextContainer>
-        </Div_ProjectContainer>
+          <Div_Card>
+            <Div_CardHeader>
+              <P_CardText>Mortgage Calculator</P_CardText>
+              <a href={urls.gitHub.mortgage}>
+                <img src={urls.images.gitHubLight}></img>
+              </a>
+            </Div_CardHeader>
+            <Link_CardLink to={urls.mortgage}>
+              <Img_ProjectImg src={urls.images.Mortgage}></Img_ProjectImg>
+            </Link_CardLink>
+          </Div_Card>
 
-        <Div_ProjectContainerReverse>
-          <Link_LinkImg to={urls.mortgage}>
-            <Img_ProjectImg src={urls.images.Mortgage}></Img_ProjectImg>
-          </Link_LinkImg>
-          <Div_TextContainer>
-            <H2_ProjectHeading>Mortgage Calculator</H2_ProjectHeading>
-            <P_ProjectDescription>
-              A simple Mortgage Calculator web application made with React, React hooks for state
-              management and a composable charting library called Recharts. Depending on the user
-              input, this application calculates total monthly payment, Amortization schedule
-              breakdown table shows the amount of principal and interest the monthly payment is made
-              of and the remaning loan. All of this is displayed on Payment charts. For styling I
-              used Emotion Styled Components.
-            </P_ProjectDescription>
-            <a href={urls.gitHub.mortgage}>
-              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-            </a>
-          </Div_TextContainer>
-        </Div_ProjectContainerReverse>
+          <Div_Card>
+            <Div_CardHeader>
+              <P_CardText>Memory Game</P_CardText>
+              <a href={urls.gitHub.memoryGame}>
+                <img src={urls.images.gitHubLight}></img>
+              </a>
+            </Div_CardHeader>
+            <Link_CardLink to={urls.memoryGame}>
+              <Img_ProjectImg src={urls.images.MemoryGame}></Img_ProjectImg>
+            </Link_CardLink>
+          </Div_Card>
 
-        <Div_ProjectContainer>
-          <Link_LinkImg to={urls.memoryGame}>
-            <Img_ProjectImg src={urls.images.MemoryGame}></Img_ProjectImg>
-          </Link_LinkImg>
-          <Div_TextContainer>
-            <H2_ProjectHeading>Memory Game</H2_ProjectHeading>
-            <P_ProjectDescription>
-              A simple Cat Memory Game web application made with React and React hooks. For styling
-              I used Emotion Styled Components.
-            </P_ProjectDescription>
-            <a href={urls.gitHub.memoryGame}>
-              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-            </a>
-          </Div_TextContainer>
-        </Div_ProjectContainer>
-        <Div_ProjectContainerReverse>
-          <Link_LinkImg to={urls.blog}>
-            <Img_ProjectImg src={urls.images.Blog}></Img_ProjectImg>
-          </Link_LinkImg>
-          <Div_TextContainer>
-            <H2_ProjectHeading>Blog app</H2_ProjectHeading>
-            <P_ProjectDescription>
-              Blog web application made with React, React hooks and web application framework
-              Express.js for communicating with backend. User is able to create articles, if the
-              conditions are met {`=>`} input fields can not be empty, click on individual articles
-              from the list to look at the full version, from this point it is possible to delete or
-              edit them. Due to the use of async functions and fetching, cards with {`"Loading..."`}
-              , or error messages are displayed. For styling I used Emotion Styled Components.
-            </P_ProjectDescription>
-            <a href={urls.gitHub.blog}>
-              <Img_GitHubIcon src={urls.images.gitHub}></Img_GitHubIcon>
-            </a>
-          </Div_TextContainer>
-        </Div_ProjectContainerReverse>
+          <Div_Card>
+            <Div_CardHeader>
+              <P_CardText>Blog</P_CardText>
+              <a href={urls.gitHub.blog}>
+                <img src={urls.images.gitHubLight}></img>
+              </a>
+            </Div_CardHeader>
+            <Link_CardLink to={urls.blog}>
+              <Img_ProjectImg src={urls.images.Blog}></Img_ProjectImg>
+            </Link_CardLink>
+          </Div_Card>
+        </Div_ProjectsContainer>
       </Div_Main>
     </HelmetProvider>
   )
 }
 
-const Img_GitHubIcon = styled.img`
-  position: absolute;
-  top: 5%;
-  right: 5%;
+const Div_Main = styled.div`
+  padding-top: ${themes.spacing.m};
+
+  min-width: 360px;
 `
 
 const H1_MainHeading = styled.h1`
-  color: ${themes.color.dark};
   margin: ${themes.spacing.none} auto;
+
   width: max-content;
+
   font-size: 4rem;
-  margin-bottom: 0.7em;
+  color: ${themes.color.dark};
+
   border-top: 1px solid ${themes.color.dark};
   border-bottom: 1px solid ${themes.color.dark};
 `
-const Div_Main = styled.div`
-  min-width: 360px;
-  background-color: ${themes.color.bright};
-  width: 99.1vw;
-  padding-top: ${themes.spacing.m};
+
+const Div_ProjectsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1em;
+
+  padding: 2em;
+  margin: 0 auto;
+
+  max-width: 1200px;
 `
 
-const Div_TextContainer = styled.div`
+const Div_Card = styled.div`
   position: relative;
-  flex: 1;
-  text-align: center;
-  padding: ${themes.spacing.s};
-  @media (min-width: ${themes.mediaQuery.large}) {
-    padding-top: ${themes.spacing.l};
-  }
-`
 
-const Div_ProjectContainer = styled.div`
+  justify-self: center;
+
+  width: 350px;
+
   border: 1px solid ${themes.color.dark};
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+`
+
+const Div_CardHeader = styled.div`
   display: flex;
-  flex-direction: column-reverse;
-  @media (min-width: ${themes.mediaQuery.medium}) {
-    flex-direction: row;
-  }
-`
-const Div_ProjectContainerReverse = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  @media (min-width: ${themes.mediaQuery.medium}) {
-    flex-direction: row-reverse;
-  }
-`
+  justify-content: space-around;
+  align-items: center;
 
-const H2_ProjectHeading = styled.h2`
-  margin: ${themes.spacing.none};
-  color: ${themes.color.dark};
-  font-size: ${themes.fonts.m};
-  @media (min-width: ${themes.mediaQuery.large}) {
-    font-size: ${themes.fonts.xl};
-  }
-`
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 
-const P_ProjectDescription = styled.p`
-  font-size: ${themes.fonts.s};
-  color: ${themes.color.dark};
-  @media (min-width: ${themes.mediaQuery.large}) {
-    font-size: 1.3rem;
-  }
-`
-
-const Link_LinkImg = styled(Link)`
-  flex: 1;
+  background-color: ${themes.color.dark};
 `
 
 const Img_ProjectImg = styled.img`
+  filter: grayscale(60%);
+
+  opacity: 50%;
+
+  height: 250px;
   width: 100%;
+`
+
+const P_CardText = styled.p`
+  text-align: center;
+
+  color: ${themes.color.bright};
+
+  font-weight: 700;
+`
+
+const Link_CardLink = styled(Link)`
+  display: block;
+
+  text-decoration: none;
+
+  line-height: 0;
 `

@@ -5,6 +5,7 @@ import MemoryGame from './images/Memory.png'
 import Mortgage from './images/Mortgage.png'
 import Todo from './images/Todo.png'
 import gitHubIcon from './images/GitHub-Mark-32px.png'
+import gitHubIconLight from './images/GitHub-Mark-Light-32px.png'
 import profilePic from './images/ProfilePic.jpg'
 
 export const urls = {
@@ -30,6 +31,7 @@ export const urls = {
     MemoryGame: `${MemoryGame}`,
     Blog: `${Blog}`,
     gitHub: `${gitHubIcon}`,
+    gitHubLight: `${gitHubIconLight}`,
   },
   gitHub: {
     main: 'https://github.com/jiriveprek/ITA-2022',
