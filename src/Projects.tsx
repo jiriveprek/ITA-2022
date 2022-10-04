@@ -111,10 +111,10 @@ const H1_MainHeading = styled.h1`
 const Div_ProjectsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1em;
+  gap: ${themes.spacing.s};
 
-  padding: 2em;
-  margin: 0 auto;
+  padding: ${themes.spacing.m} ${themes.spacing.none};
+  margin: ${themes.spacing.none} auto;
 
   max-width: 1200px;
 `

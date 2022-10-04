@@ -36,7 +36,7 @@ export const Homepage = () => {
 }
 
 const Div_Main = styled.div`
-  padding-top: 2em;
+  padding-top: ${themes.spacing.m};
 
   min-width: 360px;
 `

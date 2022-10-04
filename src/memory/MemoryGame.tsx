@@ -97,7 +97,7 @@ export const MemoryGame = () => {
 
 const Div_Main = styled.div`
   min-width: 360px;
-  height: 100vh;
+  height: 130vh;
   width: 100%;
   background: ${themes.color.dark};
   text-align: center;
@@ -131,7 +131,7 @@ const Div_HeadingBorder = styled.div`
   width: max-content;
   padding: 3px ${themes.spacing.none};
   margin: ${themes.spacing.none} auto;
-  margin-bottom: 1em;
+  margin-bottom: ${themes.spacing.s};
 `
 
 const H1_MainHeading = styled.h1`

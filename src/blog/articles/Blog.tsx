@@ -37,13 +37,11 @@ export const Blog = () => {
 }
 
 const Div_Main = styled.div`
-  padding-top: 1em;
+  padding-top: ${themes.spacing.s};
 
   min-width: 360px;
-  //height: 110vh;
 
   color: ${themes.color.bright};
-  //background-color: ${themes.color.bright};
 `
 
 const Div_BlogWrapper = styled.div`

@@ -18,7 +18,7 @@ export const Details = () => {
       {logic.loading ? (
         <Div_DetailMsgContainer>Loading...</Div_DetailMsgContainer>
       ) : logic.errMsg ? (
-        <Div_ErrorDetailsMsg>{logic.errMsg}</Div_ErrorDetailsMsg>
+        <Div_DetailMsgContainer>{logic.errMsg}</Div_DetailMsgContainer>
       ) : logic.updateErr ? (
         <Div_DetailMsgContainer>{logic.updateErr}</Div_DetailMsgContainer>
       ) : logic.deleteErr ? (
@@ -79,25 +79,25 @@ export const Details = () => {
 }
 
 const Div_DetailMsgContainer = styled.div`
-  margin: 0 auto;
+  margin: ${themes.spacing.none} auto;
   margin-top: 5em;
-  padding: 2em;
+  padding: ${themes.spacing.m};
 
   box-sizing: border-box;
 
   width: max-content;
 
-  font-size: 1rem;
+  font-size: ${themes.fonts.s};
 
   background-color: ${themes.color.dark};
 
-  @media (min-width: 560px) {
-    font-size: 2rem;
+  @media (min-width: ${themes.mediaQuery.tablet}) {
+    font-size: ${themes.fonts.xl};
   }
 `
 
 const Div_NewArticleWrapper = styled.div`
-  margin: 0 auto;
+  margin: ${themes.spacing.none} auto;
   padding-left: ${themes.spacing.s};
   padding-right: ${themes.spacing.s};
 
@@ -112,8 +112,8 @@ const Div_ArticleDetails = styled.div`
 const H2_SubHeading = styled.h2`
   color: ${themes.color.dark};
   width: max-content;
-  margin: 0.5em auto;
-  font-size: 1.75rem;
+  margin: ${themes.spacing.xs} auto;
+  font-size: ${themes.fonts.l};
   border-bottom: 1px solid ${themes.color.dark};
 `
 
@@ -126,7 +126,7 @@ const Input_ArticleTitle = styled.input`
 
   border: none;
 
-  font-size: 1.5rem;
+  font-size: ${themes.fonts.m};
   background-color: transparent;
 `
 const TextArea_ArticleContent = styled.textarea`
@@ -139,7 +139,7 @@ const TextArea_ArticleContent = styled.textarea`
 
   border: none;
 
-  font-size: 1rem;
+  font-size: ${themes.fonts.s};
 
   background-color: transparent;
 `
@@ -147,26 +147,8 @@ const TextArea_ArticleContent = styled.textarea`
 const Div_ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  @media (min-width: 560px) {
+  @media (min-width: ${themes.mediaQuery.tablet}) {
     flex-direction: row;
-  }
-`
-
-const Div_ErrorDetailsMsg = styled.div`
-  margin: 0 auto;
-  margin-top: 5em;
-  padding: 2em;
-
-  box-sizing: border-box;
-
-  width: max-content;
-
-  font-size: 1rem;
-
-  background-color: ${themes.color.dark};
-
-  @media (min-width: 560px) {
-    font-size: 2rem;
   }
 `
 

@@ -69,7 +69,7 @@ const NavbarContainer = styled.nav<isExtendedNav>`
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 1000;
+  z-index: 2;
   background-color: ${themes.color.dark};
 
   @media (min-width: ${themes.mediaQuery.tabletNav}) {
@@ -130,8 +130,6 @@ const OpenLinksButton = styled.button`
 `
 
 const NavbarExtendedContainer = styled.div`
-  z-index: 1000;
-
   display: flex;
   flex-direction: column;
   align-items: center;

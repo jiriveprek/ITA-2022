@@ -68,31 +68,31 @@ const Div_ArticlesContainer = styled.div`
 `
 
 const Div_MessageContainer = styled.div`
-  margin: 0 auto;
+  margin: ${themes.spacing.none} auto;
   margin-top: 3.5em;
-  padding: 2em;
+  padding: ${themes.spacing.m};
 
   box-sizing: border-box;
 
   width: max-content;
 
-  font-size: 1rem;
+  font-size: ${themes.fonts.s};
 
   background-color: ${themes.color.dark};
 
-  @media (min-width: 560px) {
-    font-size: 2rem;
+  @media (min-width: ${themes.mediaQuery.tablet}) {
+    font-size: ${themes.fonts.xl};
   }
 `
 
 const Div_GitHubRefContainer = styled.div`
   color: ${themes.color.darkred};
   text-align: center;
-  font-size: 1rem;
+  font-size: ${themes.fonts.s};
   margin-top: 1em;
 
-  @media (min-width: 560px) {
-    font-size: 2rem;
+  @media (min-width: ${themes.mediaQuery.tablet}) {
+    font-size: ${themes.fonts.xl};
   }
 `
 const A_RepoLink = styled.a`

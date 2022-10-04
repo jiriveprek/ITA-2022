@@ -290,18 +290,10 @@ export const MortgageCalculator = () => {
 
 const Div_Main = styled.div`
   padding-top: ${themes.spacing.l};
+  padding-bottom: ${themes.spacing.m};
 
   width: 100%;
-  //height: 240vh;
   min-width: 360px;
-
-  //background-color: ${themes.color.bright};
-  @media (max-width: ${themes.mediaQuery.extraLarge}) {
-    height: 290vh;
-  }
-  @media (max-width: ${themes.mediaQuery.large}) {
-    height: 330vh;
-  }
 `
 
 const H1_Heading = styled.h1`
@@ -386,9 +378,9 @@ const Div_TableChartContainer = styled.div`
 
   text-align: center;
 
-  @media (max-width: 1200px) {
+  @media (max-width: ${themes.mediaQuery.extraLarge}) {
     flex-direction: column;
-    gap: 2em;
+    gap: ${themes.spacing.m};
   }
 `
 
@@ -400,10 +392,10 @@ const Div_PaymentCharts = styled.div`
 
 const Div_InflatedCharts = styled.div`
   display: flex;
-  gap: 2em;
+  gap: ${themes.spacing.m};
 
   margin: ${themes.spacing.m} auto;
-  margin-top: 2em;
+  margin-top: ${themes.spacing.m};
 
   width: max-content;
 
@@ -414,14 +406,14 @@ const Div_InflatedCharts = styled.div`
 
 const Div_PropertyValueChart = styled.div`
   margin: ${themes.spacing.none} auto;
-  margin-top: 2em;
+  margin-top: ${themes.spacing.m};
 
   width: max-content;
 `
 
 const H2_Subheadings = styled.h2`
-  margin: 0 auto;
-  margin-bottom: 1em;
+  margin: ${themes.spacing.none} auto;
+  margin-bottom: ${themes.spacing.s};
 
   width: max-content;
 
@@ -432,7 +424,7 @@ const H2_Subheadings = styled.h2`
   font-weight: 700;
   color: ${themes.color.dark};
 
-  @media (max-width: 560px) {
+  @media (max-width: ${themes.mediaQuery.tablet}) {
     font-size: 1.2rem;
   }
 `
@@ -441,7 +433,7 @@ const Table_StyledTable = styled.table`
   display: block;
   overflow: auto;
 
-  margin: 0 auto;
+  margin: ${themes.spacing.none} auto;
 
   width: max-content;
   height: 550px;
@@ -450,7 +442,7 @@ const Table_StyledTable = styled.table`
 
   text-align: center;
   color: ${themes.color.dark};
-  @media (max-width: 560px) {
+  @media (max-width: ${themes.mediaQuery.tablet}) {
     width: 360px;
   }
 `

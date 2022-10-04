@@ -44,7 +44,7 @@ export const NewArticle = () => {
 }
 
 const Div_NewArticleWrapper = styled.div`
-  margin: 0 auto;
+  margin: ${themes.spacing.none} auto;
   padding-left: ${themes.spacing.s};
   padding-right: ${themes.spacing.s};
 
@@ -52,15 +52,15 @@ const Div_NewArticleWrapper = styled.div`
 `
 
 const Div_PostMsgContainer = styled.div`
-  margin: 0 auto;
+  margin: ${themes.spacing.none} auto;
   margin-top: 5em;
-  padding: 2em;
+  padding: ${themes.spacing.m};
 
   box-sizing: border-box;
 
   width: max-content;
 
-  font-size: 1rem;
+  font-size: ${themes.fonts.s};
 
   background-color: ${themes.color.dark};
 
@@ -101,7 +101,7 @@ const Input_ArticleTitle = styled.input`
 
   border: none;
 
-  font-size: 1.5rem;
+  font-size: ${themes.fonts.m};
   background-color: transparent;
 `
 
@@ -115,7 +115,7 @@ const TextAre_ArticleContent = styled.textarea`
 
   border: none;
 
-  font-size: 1rem;
+  font-size: ${themes.fonts.s};
 
   background-color: transparent;
 `

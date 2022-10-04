@@ -51,13 +51,15 @@ const TodoList = () => {
     setInputText('')
   }
 
-  const sortHandler = ({ destination, source }: DropResult) => {
-    if (!destination) {
+  const sortHandler = (drop: DropResult) => {
+    if (!drop.destination) {
       return
     } else {
-      const indexDragItem = todos.findIndex(todo => todo.id === filterHandler()[source.index].id)
+      const indexDragItem = todos.findIndex(
+        todo => todo.id === filterHandler()[drop.source.index].id
+      )
       const indexDragOverItem = todos.findIndex(
-        todo => todo.id === filterHandler()[destination.index].id
+        todo => todo.id === filterHandler()[drop.destination!.index].id
       )
       dispatch(
         todoSliceActions.sortToDos({ dragItem: indexDragItem, dragItemOver: indexDragOverItem })
@@ -112,50 +114,42 @@ const TodoList = () => {
             </Div_HeaderContainer>
             <DragDropContext onDragEnd={e => sortHandler(e)}>
               <Droppable droppableId='1'>
-                {provided => {
-                  return (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                      {filterHandler().map((item, index) => {
-                        return (
-                          <Draggable key={item.id} index={index} draggableId={item.id}>
-                            {provided => {
-                              return (
-                                <Div_ListItemContainer
-                                  ref={provided.innerRef}
-                                  {...provided.draggableProps}
-                                  {...provided.dragHandleProps}
-                                >
-                                  <Button_Complete
-                                    completed={item.completed}
-                                    onClick={() =>
-                                      dispatch(todoSliceActions.toggleCompleted(item.id))
-                                    }
-                                  >
-                                    {tickMark}
-                                  </Button_Complete>
-                                  <Label
-                                    onClick={() =>
-                                      dispatch(todoSliceActions.toggleCompleted(item.id))
-                                    }
-                                    completed={item.completed}
-                                  >
-                                    {item.text}
-                                  </Label>
-                                  <Button_Delete
-                                    onClick={() => dispatch(todoSliceActions.deleteToDo(item.id))}
-                                  >
-                                    {xMark}
-                                  </Button_Delete>
-                                </Div_ListItemContainer>
-                              )
-                            }}
-                          </Draggable>
-                        )
-                      })}
-                      {provided.placeholder}
-                    </div>
-                  )
-                }}
+                {provided => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {filterHandler().map((item, index) => {
+                      return (
+                        <Draggable key={item.id} index={index} draggableId={item.id}>
+                          {provided => (
+                            <Div_ListItemContainer
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              <Button_Complete
+                                completed={item.completed}
+                                onClick={() => dispatch(todoSliceActions.toggleCompleted(item.id))}
+                              >
+                                {tickMark}
+                              </Button_Complete>
+                              <Label
+                                onClick={() => dispatch(todoSliceActions.toggleCompleted(item.id))}
+                                completed={item.completed}
+                              >
+                                {item.text}
+                              </Label>
+                              <Button_Delete
+                                onClick={() => dispatch(todoSliceActions.deleteToDo(item.id))}
+                              >
+                                {xMark}
+                              </Button_Delete>
+                            </Div_ListItemContainer>
+                          )}
+                        </Draggable>
+                      )
+                    })}
+                    {provided.placeholder}
+                  </div>
+                )}
               </Droppable>
             </DragDropContext>
           </form>
@@ -175,13 +169,11 @@ const TodoList = () => {
 
 const Div_Main = styled.div`
   min-width: 360px;
-  // height: 100vh;
-  // background-color: ${themes.color.bright};
 `
 
 const Div_TodoContainer = styled.div`
-  margin: 0 auto;
-  padding: ${themes.spacing.xs} 0;
+  margin: ${themes.spacing.none} auto;
+  padding: ${themes.spacing.xs} ${themes.spacing.none};
 
   width: 100%;
   min-width: 360px;
@@ -240,7 +232,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-
+  margin-bottom: -0.1em;
   padding: ${themes.spacing.s};
   padding-left: ${themes.spacing.l};
   padding-right: ${themes.spacing.l};
@@ -273,7 +265,7 @@ const Label = styled.label<IsCompleted>`
 `
 
 const P_CountItems = styled.p`
-  margin: 0 ${themes.spacing.xs};
+  margin: ${themes.spacing.none} ${themes.spacing.xs};
   padding-top: 0.3em;
   padding-bottom: 0.3em;
 
@@ -284,7 +276,7 @@ const P_CountItems = styled.p`
 
   color: ${themes.color.dark};
 
-  @media (max-width: 560px) {
+  @media (max-width: ${themes.mediaQuery.tablet}) {
     display: none;
   }
 `
@@ -301,7 +293,7 @@ const Button_Submit = styled.button`
 
   border: none;
 
-  font-size: 2rem;
+  font-size: ${themes.fonts.xl};
 
   background-color: transparent;
 `
